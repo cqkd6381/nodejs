@@ -21,14 +21,16 @@ setInterval(function(){
 			console.log(chunk);
 		});
 	});
-	//连接池中使用中的连接数
+
 	if(agent.sockets['127.0.0.1:8080:']){
+		//连接池中使用中的连接数
 		console.log('sockets: ' + agent.sockets['127.0.0.1:8080:'].length);
 	}else{
 		console.log('sockets: ' + 0);
 	}
-	//连接池中处于等待状态的请求数
+	
 	if(agent.requests['127.0.0.1:8080:']){
+		//连接池中处于等待状态的请求数
 		console.log('requests: ' + agent.requests['127.0.0.1:8080:'].length);
 	}else{
 		console.log('requests: ' + 0);
