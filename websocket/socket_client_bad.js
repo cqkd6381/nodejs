@@ -1,5 +1,13 @@
+var crypto = require('crypto');
+var http = require('http');
 var Websocket = function(url){
-	this.options = parseUrl(url);
+	// this.options = parseUrl(url);
+	this.options = {
+		protocolVersion:'13',
+		port:'12010',
+		hostname:'127.0.0.1'
+	};
+
 	this.connect();
 };
 
@@ -11,7 +19,7 @@ Websocket.prototype.setSocket = function(socket){
 	this.socket = socket;
 };
 
-Websocket.prototype.connet = function(){
+Websocket.prototype.connect = function(){
 	var that = this;
 	var key = new Buffer(this.options.protocolVersion + '-' + Date.now()).toString('base64');
 	var shasum = crypto.createHash('sha1');
@@ -36,4 +44,6 @@ Websocket.prototype.connet = function(){
 		that.setSocket(socket);
 		that.onopen();
 	})
-}
+};
+
+var socket = new Websocket('ws://127.0.0.1:12010/updates');
