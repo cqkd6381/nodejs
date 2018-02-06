@@ -4,9 +4,10 @@ var n = 0;
 wss.on('connection', function (ws) {
     console.log('client connected');
     ws.on('message', function (message) {
+        console.log(message);
         n++;
         if(n > 1){
-            ws.send('you have a online client');
+            ws.send('you have an online client');
             return false;
         }
     	var i = 0;
