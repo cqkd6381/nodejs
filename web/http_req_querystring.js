@@ -1,10 +1,10 @@
 var http = require('http');
 var url = require('url');
-var querystring = require('querystring');
+// var querystring = require('querystring');
 var server = http.createServer(function(req,res){
 	res.setHeader('Content-Type','text/html;charset=utf-8');
-	var query = querystring.parse(url.parse(req.url).query);
-	// var query = url.parse(req.url,true).query;
+	// var query = querystring.parse(url.parse(req.url).query);
+	var query = url.parse(req.url,true).query;
 	res.end(JSON.stringify(query));
 });
 
