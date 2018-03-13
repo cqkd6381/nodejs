@@ -18,7 +18,11 @@ wss.on('connection', function (ws) {
      //    	i++;
     	// },2000);
     });
-    ws.on('error',function(){
-    	console.log('error1');
+    ws.on('close',function(){
+        console.log('client closed');
+    });
+
+    ws.on('error',function(err){
+    	console.log(err);
     });
 });
